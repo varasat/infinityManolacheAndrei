@@ -17,13 +17,12 @@ if (mkdir('../tmp/phplock.lock', 0700)) {
                 $header = fgetcsv($handle);
                 while (($data = fgetcsv($handle, 4096, ",")) !== FALSE) {
                     $allRows = [];
-                    if (sizeof($header) == sizeof($data) && sizeof($header)>1 && sizeof($data)>1) {
+                    if (sizeof($header) == sizeof($data) && sizeof($header) > 1 && sizeof($data) > 1) {
                         //The following three rows allow us to insert the header and the data in the right order
                         $commaSeparatedHeaders = $functionLib->renderHeaderString($header);
                         $commaSeparatedValues = $functionLib->renderDataString($data);
                         $dataLib->insertEvent($commaSeparatedHeaders, $commaSeparatedValues, $mysqli);
-                    }
-                    else{
+                    } else {
                         syslog(6, "Data in: " . basename($file) . " is invalid due to empty file or lack of proper formatting");
                     }
                 }

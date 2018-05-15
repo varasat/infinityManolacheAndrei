@@ -11,7 +11,7 @@ class DataInsertLibrary
             if ($mysqli->query($dataInsertSQL)) {
                 return true;
             } else {
-                syslog(6, "Data was not inserted succesfully:".$mysqli->error);
+                syslog(6, "Data was not inserted succesfully:" . $mysqli->error);
                 return false;
             }
         }
@@ -21,7 +21,7 @@ class DataInsertLibrary
     public function checkEventsTable($mysqli)
     {
         $tableName = $this->table;
-        $result = $mysqli->query("SHOW TABLES LIKE '".$tableName."'");
+        $result = $mysqli->query("SHOW TABLES LIKE '" . $tableName . "'");
         $tableSQL = "CREATE TABLE $tableName (
             `id` int(11) NOT NULL,
             `eventDatetime` datetime NOT NULL,
@@ -48,9 +48,8 @@ class DataInsertLibrary
                     }
                 } while ($mysqli->next_result());
                 return true;
-            }
-            else{
-                syslog(6, "Table was not created  succesfully:".$mysqli->error);
+            } else {
+                syslog(6, "Table was not created  succesfully:" . $mysqli->error);
                 echo $mysqli->error;
                 return false;
             }
