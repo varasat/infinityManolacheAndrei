@@ -25,7 +25,7 @@ class FunctionLibrary
     public function renderHeaderString(array $headerArray)
     {
         if (!empty($headerArray)) {
-            $commaSeparatedHeaders = implode(",", $headerArray) ;
+            $commaSeparatedHeaders = implode(",", $headerArray);
             return $commaSeparatedHeaders;
         }
         return false;
